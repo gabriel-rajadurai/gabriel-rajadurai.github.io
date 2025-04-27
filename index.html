@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel Rajadurai | Android Technical Lead</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --gray-light: #f1f5f9;
+            --white: #ffffff;
+            --accent: #3b82f6;
+            --border: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--gray-light);
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        .android-mascot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            z-index: 100;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .android-mascot:hover {
+            opacity: 1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .navbar {
+            background-color: var(--white);
+            padding: 1.25rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+        }
+        
+        .hero {
+            background-color: var(--white);
+            padding: 6rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--text-light);
+            font-size: 1.125rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .social-links svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .skills {
+            background-color: var(--white);
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background-color: var(--gray-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .skill-tag {
+            background-color: var(--white);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .experience {
+            background-color: var(--gray-light);
+        }
+        
+        .experience-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .experience-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experience-card:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--primary);
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .experience-company-info {
+            flex: 1;
+        }
+        
+        .experience-date {
+            color: var(--text-light);
+            font-weight: 500;
+            margin-left: 1rem;
+            white-space: nowrap;
+        }
+        
+        .experience-position {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-company {
+            font-size: 1.125rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .experience-description {
+            margin-bottom: 1.5rem;
+        }
+        
+        .experience-achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1rem;
+        }
+        
+        .achievement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            background-color: var(--gray-light);
+            border-radius: 6px;
+        }
+        
+        .achievement-item svg {
+            flex-shrink: 0;
+            color: var(--primary);
+            margin-top: 0.25rem;
+        }
+        
+        .achievement-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text);
+        }
+        
+        .achievement-content p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .projects {
+            background-color: var(--white);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: var(--gray-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .project-card::after {
+            content: "View on GitHub";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(130, 164, 238, 0.9);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.25rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 8px;
+        }
+        
+        .project-card:hover::after {
+            opacity: 1;
+        }
+        
+        .project-image {
+            height: 200px;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .project-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .project-tag {
+            background-color: var(--white);
+            color: var(--text);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .contact {
+            background-color: var(--gray-light);
+            text-align: center;
+        }
+        
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-email {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0;
+        }
+        
+        footer {
+            background-color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-light);
+        }
+        
+        @media (max-width: 768px) {
+            .experience-header {
+                flex-direction: column;
+            }
+            
+            .experience-date {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+            
+            .experience-achievements {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="android-mascot">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--primary)">
+            <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/>
+        </svg>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <div class="logo">Gabriel<span>Rajadurai</span></div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="container">
+            <h1>Gabriel Rajadurai</h1>
+            <h2>Technical Lead, Android</h2>
+            <p>
+                Technical Lead with 8+ years crafting high-performance Android applications. Expert in Jetpack Compose, Kotlin Multiplatform, and BLE integrations. Known for delivering scalable solutions that optimize performance and drive innovation through clean architecture. Passionate about creating exceptional mobile experiences and elevating development teams.
+            </p>
+            <div class="social-links">
+                <a href="mailto:rajadurai.gabriel@gmail.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    rajadurai.gabriel@gmail.com
+                </a>
+                <a href="https://linkedin.com/in/gabriel-rajadurai" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/gabriel-rajadurai" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Core Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Kotlin</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Jetpack Compose</span>
+                        <span class="skill-tag">Kotlin Multiplatform</span>
+                        <span class="skill-tag">Flutter</span>
+                        <span class="skill-tag">Dart</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Architecture & Design</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MVVM</span>
+                        <span class="skill-tag">MVP</span>
+                        <span class="skill-tag">Redux</span>
+                        <span class="skill-tag">Clean Architecture</span>
+                        <span class="skill-tag">Modular Design</span>
+                        <span class="skill-tag">Dependency Injection</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Libraries & Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Dagger/Hilt</span>
+                        <span class="skill-tag">Coroutines</span>
+                        <span class="skill-tag">Flows</span>
+                        <span class="skill-tag">Channels</span>
+                        <span class="skill-tag">Jetpack Components</span>
+                        <span class="skill-tag">BLE Integration</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Data & Networking</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Room DB</span>
+                        <span class="skill-tag">Realm</span>
+                        <span class="skill-tag">Couchbase</span>
+                        <span class="skill-tag">Retrofit</span>
+                        <span class="skill-tag">Ktor</span>
+                        <span class="skill-tag">GraphQL</span>
+                        <span class="skill-tag">Websockets</span>
+                        <span class="skill-tag">Firebase</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section class="section experience" id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-container">
+                <!-- Biofourmis Experience -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-company-info">
+                            <h3 class="experience-position">Technical Lead, Android</h3>
+                            <div class="experience-company">Biofourmis</div>
+                        </div>
+                        <div class="experience-date">September 2020 - Present</div>
+                    </div>
+                    <p class="experience-description">
+                        Leading development teams across multiple healthcare applications with a focus on innovation and excellence.
+                    </p>
+                    <div class="experience-achievements">
+                        <div class="achievement-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <div class="achievement-content">
+                                <h4>Application Portfolio</h4>
+                                <p>Led the end-to-end development of Care Patient, Care Clinician, and Sentinel, overseeing architecture, implementation, and release</p>
+                            </div>
+                        </div>
+                        <div class="achievement-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <div class="achievement-content">
+                                <h4>Jetpack Compose</h4>
+                                <p>Built custom compose views and libraries and successfully migrated legacy UI components to Jetpack Compose for modern UI development</p>
+                            </div>
+                        </div>
+                        <div class="achievement-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <div class="achievement-content">
+                                <h4>Architecture Leadership</h4>
+                                <p>Designed modular system reducing codebase complexity by 40% while improving maintainability</p>
+                            </div>
+                        </div>
+                        <div class="achievement-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <div class="achievement-content">
+                                <h4>Real-time Solutions</h4>
+                                <p>Implemented Websocket solutions connecting mobile applications to web dashboards</p>
+                            </div>
+                        </div>
+                        <div class="achievement-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <div class="achievement-content">
+                                <h4>Device Integration</h4>
+                                <p>Built robust BLE frameworks handling concurrent connections while ensuring reliability</p>
+                            </div>
+                        </div>
+                        <div class="achievement-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <div class="achievement-content">
+                                <h4>Cross-platform Development</h4>
+                                <p>Created Kotlin Multiplatform modules shared between iOS/Android, reducing development effort</p>
+                            </div>
+                        </div>
+                        <div class="achievement-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <div class="achievement-content">
+                                <h4>Custom Solutions</h4>
+                                <p>Developed dynamic code loading framework and comprehensive form generation library</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- GroundHogApps Experience -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-company-info">
+                            <h3 class="experience-position">MTS - II, Android</h3>
+                            <div class="experience-company">GroundHogApps</div>
+                        </div>
+                        <div class="experience-date">June 2016 - September 2020</div>
+                    </div>
+                    <p class="experience-description">
+                        Delivered enterprise-grade mobile solutions for diverse client requirements.
+                    </p>
+                    <div class="experience-achievements">
+                        <div class="achievement-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <div class="achievement-content">
+                                <h4>Application Portfolio</h4>
+                                <p>Contributed significantly to GroundHog, FormHound, RapidInspect, Certrax, and Cooperfit</p>
+                            </div>
+                        </div>
+                        <div class="achievement-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <div class="achievement-content">
+                                <h4>Reliable Performance</h4>
+                                <p>Implemented Foreground Services ensuring consistent background operations</p>
+                            </div>
+                        </div>
+                        <div class="achievement-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <div class="achievement-content">
+                                <h4>Location Services</h4>
+                                <p>Integrated Google Maps API creating intuitive location-based features</p>
+                            </div>
+                        </div>
+                        <div class="achievement-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <div class="achievement-content">
+                                <h4>Team Collaboration</h4>
+                                <p>Worked with cross-functional teams to deliver solutions on time</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Personal Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card" onclick="window.open('https://github.com/gabriel-rajadurai/dev-logger', '_blank')">
+                    <div class="project-image">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="60" height="60">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">DevLogger</h3>
+                        <p class="project-description">
+                            Real-time logging system showcasing networking and desktop development skills. Built using Ktor WebSocket for streaming application logs to desktop client with advanced filtering capabilities.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Ktor</span>
+                            <span class="project-tag">WebSocket</span>
+                            <span class="project-tag">TonadoFX</span>
+                            <span class="project-tag">Kotlin</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" onclick="window.open('https://github.com/gabriel-rajadurai/APOD', '_blank')">
+                    <div class="project-image">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="60" height="60">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">APOD (Astronomy Picture of the Day)</h3>
+                        <p class="project-description">
+                            Multiplatform application demonstrating modern development approaches. Created parallel implementations using Flutter and Jetpack Compose with clean architecture and dependency injection.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Flutter</span>
+                            <span class="project-tag">Jetpack Compose</span>
+                            <span class="project-tag">Clean Architecture</span>
+                            <span class="project-tag">Dependency Injection</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <p>I'm always interested in discussing new projects, creative ideas or opportunities to be part of your vision.</p>
+                <div class="contact-email">
+                    <a href="mailto:rajadurai.gabriel@gmail.com">rajadurai.gabriel@gmail.com</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/gabriel-rajadurai" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1
