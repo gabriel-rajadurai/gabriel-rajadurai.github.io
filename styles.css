@@ -498,4 +498,12 @@ footer {
     .hero h2 {
         font-size: 1.25rem;
     }
+
+    .projects-grid {
+        grid-template-columns: 1fr; /* Single column on small devices */
+    }
+    
+    .android-mascot {
+        display: none;
+    }
 }
